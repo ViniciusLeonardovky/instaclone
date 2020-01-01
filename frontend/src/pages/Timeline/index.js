@@ -1,39 +1,39 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { FaRegHeart } from 'react-icons/fa';
 import { Container } from './styles';
 
-// import media from '../../components/Media';
+import Header from '../../components/Header';
+import MediaList from '../../components/MediaList';
 
 import api from '../../services/api';
 
 export default function Timeline() {
-  const [medias, setMedias] = useState([{}]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   useEffect(() => {
     async function loadMedias() {
-      const response = await api.get('timeline');
+      const response = await api.get('medias');
 
-      setMedias(response.data);
+      setUploadedFiles(
+        response.data.map(file => ({
+          id: file._id,
+          name: file.name,
+          author: file.author,
+          description: file.description,
+          preview: file.url,
+          uploaded: true,
+          url: file.url,
+        }))
+      );
     }
     loadMedias();
   }, []);
 
   return (
     <Container>
-      <header>header</header>
-      <ul>
-        {medias.map(media => (
-          <li key={media._id}>
-            <strong>{media.author}</strong>
-            <img src={media.url} alt="" />
-            <button type="button" onClick={() => {}}>
-              <FaRegHeart size={32} /> 11
-            </button>
-          </li>
-        ))}
-      </ul>
+      <Header onUpload={() => {}} />
+      <MediaList files={uploadedFiles} />
     </Container>
   );
 }

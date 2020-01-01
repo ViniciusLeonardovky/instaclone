@@ -1,8 +1,17 @@
-// import Party from '../schemas/Party';
+import Media from '../schemas/Media';
 
 class LikeController {
-  // async index(req, res) {}
-  // async store(req, res) {}
+  async store(req, res) {
+    const media = await Media.findById(req.params.id);
+
+    media.set({ likes: media.likes + 1 });
+
+    await media.save();
+
+    // req.io.emit('like', media);
+
+    return res.json(media);
+  }
 }
 
 export default new LikeController();

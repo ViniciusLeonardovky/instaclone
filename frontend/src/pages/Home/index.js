@@ -22,7 +22,7 @@ export default function Home({ history }) {
   return (
     <Container>
       <form onSubmit={handleSubmit}>
-        <img src={logo} alt="Instagram" />
+        <img src={logo} alt="Instaclone" />
         <input
           type="text"
           placeholder="Nome de usuário"

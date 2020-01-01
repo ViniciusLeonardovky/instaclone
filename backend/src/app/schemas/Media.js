@@ -4,6 +4,22 @@ const MediaSchema = new mongoose.Schema({
   author: String,
   description: String,
   name: String,
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  comments: {
+    type: [
+      {
+        author_comment: String,
+        content_coment: String,
+        created_at: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+  },
   size: Number,
   key: String,
   url: String,

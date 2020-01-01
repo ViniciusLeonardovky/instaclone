@@ -44,7 +44,6 @@ class App {
 
     this.app.use(express.json());
     this.app.use(cors({ credentials: true, origin: true }));
-    // this.app.use(cors());
     this.app.use(
       '/files',
       express.static(resolve(__dirname, '..', 'tmp', 'uploads'))
