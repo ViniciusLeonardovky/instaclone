@@ -26,6 +26,8 @@ class MediaController {
       url,
     });
 
+    req.io.emit('media', media);
+
     return res.status(200).json(media);
   }
 }

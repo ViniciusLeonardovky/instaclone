@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
+import socketio from 'socket.io-client';
 import { Container } from './styles';
 
 import Header from '../../components/Header';
@@ -10,6 +11,15 @@ import api from '../../services/api';
 
 export default function Timeline() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const socket = useMemo(() => socketio('http://localhost:3333'), []);
+
+  useEffect(() => {
+    socket.on('media', data => {
+      setUploadedFiles([...uploadedFiles, data]);
+      console.log(data);
+    });
+  }, [uploadedFiles, socket]);
 
   useEffect(() => {
     async function loadMedias() {
