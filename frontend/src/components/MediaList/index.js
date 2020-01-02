@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { FaRegHeart, FaRegComment } from 'react-icons/fa';
+
 import { Container } from './styles';
 
 export default function MediaList({ files }) {

@@ -2,7 +2,7 @@ import Media from '../schemas/Media';
 
 class MediaController {
   async index(req, res) {
-    const medias = await Media.find();
+    const medias = await Media.find().sort('-created_at');
 
     return res.status(200).json(medias);
   }

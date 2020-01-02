@@ -12,14 +12,13 @@ import api from '../../services/api';
 export default function Timeline() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
-  const socket = useMemo(() => socketio('http://localhost:3333'), []);
+  const socket = useMemo(() => socketio(process.env.REACT_APP_API_URL), []);
 
   useEffect(() => {
     socket.on('media', data => {
       setUploadedFiles([...uploadedFiles, data]);
-      console.log(data);
     });
-  }, [uploadedFiles, socket]);
+  }, [socket]);
 
   useEffect(() => {
     async function loadMedias() {
@@ -38,7 +37,7 @@ export default function Timeline() {
       );
     }
     loadMedias();
-  }, []);
+  }, [uploadedFiles]);
 
   return (
     <Container>

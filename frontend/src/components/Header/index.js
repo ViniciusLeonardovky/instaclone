@@ -29,9 +29,7 @@ export default function Media() {
 
   function onFormSubmit(e) {
     e.preventDefault();
-    fileUpload(file).then(response => {
-      console.log(response.data);
-    });
+    fileUpload(file);
   }
 
   function onChange(e) {

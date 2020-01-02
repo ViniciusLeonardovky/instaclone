@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
 
   svg {
     color: #000;
@@ -19,6 +19,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 50px;
+
+    &:last-child {
+      margin-bottom: 50px;
+    }
 
     button {
       background: transparent;
@@ -27,6 +32,7 @@ export const Container = styled.div`
     div {
       display: flex;
       flex-direction: column;
+      border-bottom: 1px solid #ccc;
 
       strong {
         margin-bottom: 5px;
