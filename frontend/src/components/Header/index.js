@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 
@@ -41,7 +42,8 @@ export default function Media() {
       <FaInstagram size={54} />
       <img src={logo} alt="Instaclone" />
       <form onSubmit={onFormSubmit}>
-        <input type="file" name="Imagem" onChange={onChange} />
+        <label htmlFor="inputfile">Selecionar um arquivo</label>
+        <input id="inputfile" type="file" name="Imagem" onChange={onChange} />
         <button type="submit">Upload</button>
       </form>
     </Container>

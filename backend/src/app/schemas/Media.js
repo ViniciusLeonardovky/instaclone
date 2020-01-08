@@ -12,7 +12,7 @@ const MediaSchema = new mongoose.Schema({
     type: [
       {
         author_comment: String,
-        content_coment: String,
+        content_comment: String,
         created_at: {
           type: Date,
           default: Date.now,

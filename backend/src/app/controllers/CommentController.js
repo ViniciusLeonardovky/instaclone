@@ -2,11 +2,11 @@ import Media from '../schemas/Media';
 
 class CommentController {
   async index(req, res) {
-    const { media_id } = req.params;
+    const { id } = req.params;
 
-    const media = await Media.findById(media_id);
+    const media = await Media.findById(id);
 
-    return res.status(200).json(media.comments);
+    return res.status(200).json(media);
   }
 
   async store(req, res) {
